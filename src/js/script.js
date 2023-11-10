@@ -245,17 +245,24 @@
       thisProduct.amountWidget = new AmountWidget(
         thisProduct.dom.amountWidgetElem
       );
+
       thisProduct.dom.amountWidgetElem.addEventListener('updated', function () {
         thisProduct.processOrder();
+        const newValue = thisProduct.amountWidget.input.value;
+        thisProduct.amountWidget.setValue(newValue);
       });
     }
   }
+
   class AmountWidget {
     constructor(element) {
       const thisWidget = this;
       thisWidget.getElements(element);
       thisWidget.setValue(thisWidget.input.value);
       thisWidget.initActions();
+      thisWidget.min = settings.amountWidget.defaultMin;
+      thisWidget.max = settings.amountWidget.defaultMax;
+      thisWidget.defaultValue = settings.amountWidget.defaultValue;
     }
 
     getElements(element) {
@@ -270,25 +277,28 @@
       thisWidget.linkIncrease = thisWidget.element.querySelector(
         select.widgets.amount.linkIncrease
       );
+      thisWidget.previousValue = thisWidget.input.value;
     }
     setValue(value) {
       const thisWidget = this;
+
       const newValue = parseInt(value);
-      /* TODO : Add validation */
+
       if (
-        thisWidget.value !== newValue &&
         !isNaN(newValue) &&
-        newValue >= settings.amountWidget.defaultMin &&
-        newValue <= settings.amountWidget.defaultMax
+        newValue >= thisWidget.min &&
+        newValue <= thisWidget.max
       ) {
         thisWidget.value = newValue;
       } else {
-        thisWidget.value = settings.amountWidget.defaultValue;
+        // W przypadku błędnej wartości przywróć poprzednią wartość
+        thisWidget.input.value = thisWidget.value;
+        return;
       }
-      thisWidget.input.value = thisWidget.value;
-      this.announce();
-    }
 
+      thisWidget.input.value = thisWidget.value;
+      thisWidget.announce();
+    }
     initActions() {
       const thisWidget = this;
       thisWidget.input.addEventListener('change', function () {
@@ -326,7 +336,7 @@
       const thisCart = this;
       thisCart.dom = {};
       thisCart.dom.wrapper = element;
-      thisCart.dom.toggleTrigger = thisCart.dom.toggleTrigger.querySelector(
+      thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(
         select.cart.toggleTrigger
       );
     }
