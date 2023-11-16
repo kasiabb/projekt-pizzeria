@@ -302,12 +302,12 @@
   class AmountWidget {
     constructor(element) {
       const thisWidget = this;
-      thisWidget.getElements(element);
-      thisWidget.setValue(thisWidget.input.value);
-      thisWidget.initActions();
       thisWidget.min = settings.amountWidget.defaultMin;
       thisWidget.max = settings.amountWidget.defaultMax;
       thisWidget.defaultValue = settings.amountWidget.defaultValue;
+      thisWidget.getElements(element);
+      thisWidget.setValue(thisWidget.inputValue || thisWidget.defaultValue);
+      thisWidget.initActions();
     }
 
     getElements(element) {
@@ -375,7 +375,6 @@
       thisCart.getElements(element);
       console.log('newCart', thisCart);
       thisCart.initActions();
-      thisCart.add();
     }
 
     getElements(element) {
