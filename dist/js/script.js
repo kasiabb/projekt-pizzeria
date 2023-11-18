@@ -290,16 +290,10 @@
     }
 
     initAmountWidget() {
-      const thisProduct = this;
-
-      thisProduct.amountWidget = new AmountWidget(
-        thisProduct.dom.amountWidgetElem
-      );
-
-      thisProduct.dom.amountWidgetElem.addEventListener('updated', function () {
-        thisProduct.processOrder();
-        const newValue = thisProduct.amountWidget.input.value;
-        thisProduct.amountWidget.setValue(newValue);
+      this.amountWidget = new AmountWidget(this.dom.amountWidgetElem);
+      this.dom.amountWidgetElem.addEventListener('updated', (event) => {
+        event.preventDefault();
+        this.processOrder();
       });
     }
   }
@@ -340,10 +334,6 @@
         newValue <= thisWidget.max
       ) {
         thisWidget.value = newValue;
-      } else {
-        // W przypadku błędnej wartości przywróć poprzednią wartość
-        thisWidget.input.value = thisWidget.value;
-        return;
       }
 
       thisWidget.input.value = thisWidget.value;
@@ -356,10 +346,6 @@
       });
       thisWidget.linkDecrease.addEventListener('click', function (event) {
         event.preventDefault();
-        // Add a check to prevent the value from going below zero
-        if (thisWidget.value > 0) {
-          thisWidget.setValue(thisWidget.value - 1);
-        }
       });
       thisWidget.linkIncrease.addEventListener('click', function (event) {
         event.preventDefault();
