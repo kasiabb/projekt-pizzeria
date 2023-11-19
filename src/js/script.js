@@ -259,15 +259,13 @@
           const optionSelected =
             formData[paramId] && formData[paramId].includes(optionId);
           // check if there is param with a name of paramId in formData and if it includes optionId
-          const isOptionNotDefault = !option.default;
-
-          if (isOptionNotDefault) {
-            price += option.price;
-          } else {
-            const isOptionDefault = option.default;
-
-            if (isOptionDefault) {
-              price -= option.price;
+          if (optionSelected) {
+            if (!option.default == true) {
+              price += option.price;
+            } else {
+              if (!option.default == true) {
+                price -= option.price;
+              }
             }
           }
           const optionImage = thisProduct.dom.imageWrapper.querySelector(
