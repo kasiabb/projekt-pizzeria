@@ -409,7 +409,6 @@
         thisCart.update();
       });
     }
-
     add(menuProduct) {
       const thisCart = this;
       console.log('adding product', menuProduct);

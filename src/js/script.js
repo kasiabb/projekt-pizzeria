@@ -217,9 +217,11 @@
             formData[paramId] && formData[paramId].includes(optionId);
           // check if there is param with a name of paramId in formData and if it includes optionId
           if (optionSelected) {
-            if (option.default !== true) {
+            if (!option.default) {
               price += option.price;
-            } else {
+            }
+          } else {
+            if (option.default) {
               price -= option.price;
             }
           }
@@ -397,15 +399,16 @@
     initActions() {
       const thisCart = this;
       thisCart.dom.toggleTrigger.addEventListener('click', function () {
-        thisCart.dom.wrapper.classList.toggle(classNames.wrapperActive);
-        thisCart.update(); // Dodaj to, aby odświeżyć koszyk po rozwinięciu/zwinieciu
+        thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
       });
 
-      thisCart.dom.productList.addEventListener('remove', function (event) {
-        thisCart.remove(event.detail.cartProduct);
+      thisCart.dom.productList.addEventListener('updated', function () {
+        thisCart.update();
+      });
+      thisCart.dom.productList.addEventListener('remove', function () {
+        thisCart.update();
       });
     }
-
     add(menuProduct) {
       const thisCart = this;
       console.log('adding product', menuProduct);
