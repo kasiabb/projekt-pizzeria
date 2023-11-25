@@ -219,9 +219,7 @@
           if (optionSelected) {
             if (option.default !== true) {
               price += option.price;
-            }
-          } else {
-            if (option.default == true) {
+            } else {
               price -= option.price;
             }
           }
@@ -400,11 +398,9 @@
       const thisCart = this;
       thisCart.dom.toggleTrigger.addEventListener('click', function () {
         thisCart.dom.wrapper.classList.toggle(classNames.wrapperActive);
-        thisCart.update();
+        thisCart.update(); // Dodaj to, aby odświeżyć koszyk po rozwinięciu/zwinieciu
       });
-      thisCart.dom.toggleTrigger.addEventListener('click', function () {
-        thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
-      });
+
       thisCart.dom.productList.addEventListener('remove', function (event) {
         thisCart.remove(event.detail.cartProduct);
       });
