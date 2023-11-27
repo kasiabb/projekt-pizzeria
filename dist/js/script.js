@@ -331,6 +331,7 @@
       const newValue = parseInt(value);
 
       if (
+        thisWidget !== newValue &&
         !isNaN(newValue) &&
         newValue >= thisWidget.min &&
         newValue <= thisWidget.max
@@ -343,7 +344,8 @@
     }
     initActions() {
       const thisWidget = this;
-      thisWidget.input.addEventListener('change', function () {
+      thisWidget.input.addEventListener('change', function (event) {
+        event.preventDefault();
         thisWidget.setValue(thisWidget.input.value);
       });
       thisWidget.linkDecrease.addEventListener('click', function (event) {
@@ -405,8 +407,8 @@
       thisCart.dom.productList.addEventListener('updated', function () {
         thisCart.update();
       });
-      thisCart.dom.productList.addEventListener('remove', function () {
-        thisCart.update();
+      thisCart.dom.productList.addEventListener('remove', function (event) {
+        thisCart.remove(event.detail.cartProduct);
       });
     }
     add(menuProduct) {
@@ -420,25 +422,31 @@
 
       /* add element to menu */
       thisCart.dom.productList.appendChild(menuProduct.element);
+
       thisCart.products.push(new CartProduct(menuProduct, menuProduct.element));
       thisCart.update();
     }
 
     update() {
       const thisCart = this;
+      console.log('Before update totalPrice:', thisCart.totalPrice);
       let deliveryFee = settings.cart.defaultDeliveryFee;
       let totalNumber = 0;
       let subtotalPrice = 0;
 
       for (let singleProduct of thisCart.products) {
+        console.log('Single Product:', singleProduct);
         totalNumber += singleProduct.amount;
         subtotalPrice += singleProduct.price;
       }
+      console.log('Total Number:', totalNumber);
+      console.log('Subtotal Price:', subtotalPrice);
       if (!thisCart.products.length) {
         deliveryFee = 0;
       }
 
       thisCart.totalPrice = subtotalPrice + deliveryFee;
+      console.log('After update totalPrice:', thisCart.totalPrice);
 
       thisCart.dom.deliveryFee.innerHTML = deliveryFee;
       thisCart.dom.totalNumber.innerHTML = totalNumber;
@@ -470,6 +478,7 @@
       thisCartProduct.params = menuProduct.params;
 
       thisCartProduct.getElements(element);
+      thisCartProduct.initAmountWidget();
       thisCartProduct.initActions();
       console.log('thisCartProduct:', thisCartProduct);
     }
@@ -506,6 +515,7 @@
         thisCartProduct.dom.price.innerHTML = thisCartProduct.price;
       });
     }
+
     remove() {
       const thisCartProduct = this;
       const event = new CustomEvent('remove', {
@@ -561,6 +571,7 @@
       const thisApp = this;
       const cartElem = document.querySelector(select.containerOf.cart);
       thisApp.cart = new Cart(cartElem);
+      console.log('Initialized cart:', thisApp.cart);
     },
 
     init: function () {
