@@ -252,7 +252,7 @@
         thisProduct.dom.amountWidgetElem
       );
       thisProduct.amountWidget.input.addEventListener('change', function () {
-        this.processOrder();
+        thisProduct.processOrder();
       });
     }
 
@@ -312,7 +312,7 @@
       thisWidget.min = settings.amountWidget.defaultMin;
       thisWidget.max = settings.amountWidget.defaultMax;
       thisWidget.defaultValue = settings.amountWidget.defaultValue;
-      thisWidget.setValue(thisWidget.inputValue || thisWidget.defaultValue);
+      thisWidget.setValue(thisWidget.input.value || thisWidget.defaultValue);
       thisWidget.initActions();
     }
 
@@ -445,7 +445,6 @@
         console.log('Single Product:', singleProduct);
         totalNumber += singleProduct.amount;
         subtotalPrice += singleProduct.price;
-        singleProduct.amountWidget.setValue(singleProduct.amount);
       }
 
       if (!thisCart.products.length) {
