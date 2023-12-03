@@ -6,9 +6,7 @@
       "name": "Zio Stefano's Doughnut",
       "price": 9,
       "description": "Treat yourself with this soft, freshly baked cookie. The recipe has been handed down from generation to generation in our family and it has won us several first place prizes in local competitions.",
-      "images": [
-        "<img class=\"active\" src=\"images/doughnut.svg\">"
-      ]
+      "images": ["<img class=\"active\" src=\"images/doughnut.svg\">"]
     },
     {
       "id": "breakfast",
@@ -16,9 +14,7 @@
       "name": "Zia Giulia's Breakfast",
       "price": 9,
       "description": "There's no better way to start your day than indulging yourself with a cup of fresh Italian coffee and crispy waffels. Made just for you on the spot, this breakfast combo has been our guests' favorite for over 50 years.",
-      "images": [
-        "<img class=\"active\" src=\"images/breakfast.svg\">"
-      ],
+      "images": ["<img class=\"active\" src=\"images/breakfast.svg\">"],
       "params": {
         "coffee": {
           "label": "Coffee type",
@@ -202,87 +198,5 @@
       }
     }
   ],
-  "orders": [
-    {
-      "address": "vds",
-      "phone": "",
-      "totalPrice": 47,
-      "subtotalPrice": 27,
-      "totalNumber": 3,
-      "deliveryFee": 20,
-      "products": [
-        {
-          "id": "0",
-          "amount": 1,
-          "price": 9,
-          "priceSingle": 9,
-          "name": "Zio Stefano's Doughnut",
-          "params": {}
-        },
-        {
-          "id": "0",
-          "amount": 2,
-          "price": 18,
-          "priceSingle": 9,
-          "name": "Zio Stefano's Doughnut",
-          "params": {}
-        }
-      ],
-      "id": 1
-    },
-    {
-      "address": "vds",
-      "phone": "sdsaCDS",
-      "totalPrice": 146,
-      "subtotalPrice": 126,
-      "totalNumber": 14,
-      "deliveryFee": 20,
-      "products": [
-        {
-          "id": "0",
-          "amount": 5,
-          "price": 45,
-          "priceSingle": 9,
-          "name": "Zio Stefano's Doughnut",
-          "params": {}
-        },
-        {
-          "id": "0",
-          "amount": 9,
-          "price": 81,
-          "priceSingle": 9,
-          "name": "Zio Stefano's Doughnut",
-          "params": {}
-        }
-      ],
-      "id": 2
-    },
-    {
-      "address": "vds",
-      "phone": "",
-      "totalPrice": 47,
-      "subtotalPrice": 27,
-      "totalNumber": 3,
-      "deliveryFee": 20,
-      "products": [
-        {
-          "id": "0",
-          "amount": 1,
-          "price": 9,
-          "priceSingle": 9,
-          "name": "Zio Stefano's Doughnut",
-          "params": {}
-        },
-        {
-          "id": "0",
-          "amount": 2,
-          "price": 18,
-          "priceSingle": 9,
-          "name": "Zio Stefano's Doughnut",
-          "params": {}
-        }
-      ],
-      "id": 3
-    }
-  ]
+  "orders": []
 }

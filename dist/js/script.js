@@ -251,7 +251,7 @@
       thisProduct.amountWidget = new AmountWidget(
         thisProduct.dom.amountWidgetElem
       );
-      thisProduct.amountWidget.input.addEventListener('change', function () {
+      thisProduct.amountWidget.input.addEventListener('updated', function () {
         thisProduct.processOrder();
       });
     }
