@@ -29,6 +29,7 @@
             <h2 class="logo__subtitle">the best homemade Italian food</h2>
           </div>
           <div class="main-nav">
+            <a href="#home">Home</a>
             <a href="#order">Order</a>
             <a href="#booking">Booking</a>
           </div>
@@ -83,6 +84,9 @@
     </header>
 
     <div id="pages">
+      <section id="home">
+        <div class="home-wrapper container"></div>
+      </section>
       <section id="order">
         <div id="product-list" class="product-list container"></div>
       </section>
@@ -90,6 +94,65 @@
         <div class="booking-wrapper container"></div>
       </section>
     </div>
+    <script id="template-home" type="text/x-handlebars-template">
+      <div class='home-header'>
+        <div class='row-wrapper'>
+          <div class='box1'>
+            <img src='images/home/pizza20.jpg' />
+            <div class='orderbooking-links'>
+              <a href='#order' class='home-button'><h3>ORDER ONLINE</h3></a>
+              <p>Delicious food delivered to your door</p>
+            </div>
+          </div>
+          <div class='box1'>
+            <img src='images/home/pizza22.jpg' />
+            <div class='orderbooking-links'>
+              <a href='#booking' class='home-button'><h3>BOOK A TABLE</h3></a>
+            </div>
+          </div>
+        </div>
+            <div class='opening'>
+              <p class='title'>OPENING HOURS</p>
+              <p class='subtitle'>TUE-SUN,12PM-12AM</p>
+            </div>
+          </div>
+          <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true }'>
+              <div class="carousel-cell">
+                <div class="opinion">
+                  <img src='images/home/pizza19.jpg' />
+                 </div>
+                <div class="description">
+                  <h1>DELICIOUS FOOD</h1>
+                  <p>uspendisse vulputate blandit velit, at congue leo aliquam eget. Aenean varius nibh quam,</p>
+                </div>
+                <div class="opinion">
+                  <img src='images/home/pizza23.jpg' />
+                 </div>
+                <div class="description">
+                  <h1>GOOD SNACKS</h1>
+                  <p>uspendisse vulputate blandit velit, at congue leo aliquam eget. Aenean varius nibh quam,</p>
+                </div>
+                <div class="opinion">
+                  <img src='images/home/pizza24.jpg' />
+                 </div>
+                <div class="description">
+                  <h1>BEST SERVICE</h1>
+                  <p>uspendisse vulputate blandit velit, at congue leo aliquam eget. Aenean varius nibh quam,</p>
+                </div>
+
+
+
+              </div>
+
+
+
+
+          </div>
+
+        </div>
+
+      </div>
+    </script>
 
     <script id="template-cart-product" type="text/x-handlebars-template">
       <li>
@@ -293,6 +356,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     <script src="./vendor/range-slider.min.js"></script>
     <script src="js/app.js" type="module"></script>
   </body>

@@ -1,0 +1,81 @@
+.home-header {
+  display: flex;
+  flex-direction: column;
+  margin: 60px 0px;
+  color: $color-light;
+  text-transform: uppercase;
+}
+
+.box1 {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.box1 img {
+  width: 350px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: $radius;
+}
+.row-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  gap: 10px;
+  align-items: center;
+}
+.box1 p {
+  opacity: 0;
+  margin-bottom: 0;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.box1:hover p {
+  transform: translateY(-50%);
+  transition: $transition;
+  opacity: 100%;
+  margin: 0;
+}
+.box1 h3 {
+  margin: 20px 0 0 0;
+  color: white;
+  font-weight: bold;
+}
+
+.box1:hover h3 {
+  transform: translateY(-40%);
+  transition: $transition;
+  margin: 0 0 10px 0;
+}
+.orderbooking-links {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.orderbooking-links h3,
+.orderbooking-links p {
+  margin: 10px 0;
+}
+.opening {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: $color-main;
+  height: 120px;
+  width: 709px;
+  text-align: center;
+  padding-top: 5px;
+  margin-top: 5px;
+}
+.main-carousel img {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+}
