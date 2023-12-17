@@ -5,11 +5,6 @@ import Booking from './components/Booking.js';
 import Home from './components/Home.js';
 
 const app = {
-  initHome: function () {
-    const thisApp = this;
-    const homeWrapper = document.querySelector(select.containerOf.homePage);
-    thisApp.homePage = new Home(homeWrapper);
-  },
   initBooking: function () {
     const thisApp = this;
     const bookingContainer = document.querySelector(select.containerOf.booking);
@@ -41,6 +36,8 @@ const app = {
 
         /** get page id from href attribute */
         const id = clickedElement.getAttribute('href').replace('#', '');
+        console.log('Clicked link. Page ID:', id);
+
         thisApp.activatePage(id);
         window.location.hash = '#/' + id;
       });
@@ -95,14 +92,31 @@ const app = {
       app.cart.add(event.detail.product);
     });
   },
+  initHome: function () {
+    const thisApp = this;
+    const homeWrapper = document.querySelector(select.containerOf.homePage);
+
+    thisApp.homePage = new Home(homeWrapper);
+    thisApp.navLinks = document.querySelectorAll(select.home.navLinks);
+
+    for (let navLink of thisApp.navLinks) {
+      navLink.addEventListener('click', function (event) {
+        const clickedElement = this;
+        event.preventDefault();
+        const linkId = clickedElement.getAttribute('href').replace('#', '');
+        thisApp.activatePage(linkId);
+        window.location.hash = '#/' + linkId;
+      });
+    }
+  },
 
   init: function () {
     const thisApp = this;
     console.log('*** App starting ***');
     thisApp.initData();
     thisApp.initCart();
-    thisApp.initPages();
     thisApp.initBooking();
+    thisApp.initPages();
     thisApp.initHome();
   },
 };

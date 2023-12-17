@@ -31,8 +31,7 @@
   opacity: 0;
   margin-bottom: 0;
   color: white;
-  font-weight: bold;
-  font-size: 20px;
+  font-size: 12px;
 }
 
 .box1:hover p {
@@ -42,27 +41,27 @@
   margin: 0;
 }
 .box1 h3 {
-  margin: 20px 0 0 0;
+  margin: 40px 0 0 0;
   color: white;
   font-weight: bold;
+  font-size: 15px;
 }
 
 .box1:hover h3 {
-  transform: translateY(-40%);
+  transform: translateY(-25%);
   transition: $transition;
   margin: 0 0 10px 0;
 }
 .orderbooking-links {
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   text-align: center;
+  justify-content: center;
+  margin: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
-.orderbooking-links h3,
-.orderbooking-links p {
-  margin: 10px 0;
-}
+
 .opening {
   display: flex;
   flex-direction: column;
@@ -74,8 +73,147 @@
   padding-top: 5px;
   margin-top: 5px;
 }
-.main-carousel img {
+
+.carousel img {
   height: 200px;
   width: 200px;
   object-fit: cover;
+}
+
+.carousel {
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  outline: none;
+  z-index: 2;
+  text-align: center;
+}
+
+.carousel-cell {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+.opinion img {
+  max-width: 100%;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.is-selected {
+  display: flex;
+}
+.flickity-page-dots {
+  position: absolute;
+  bottom: -180px;
+  display: flex;
+  justify-content: center;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 0 5px;
+  font-size: 0px;
+}
+
+.flickity-prev-next-button {
+  background: none;
+  color: red;
+  border: none;
+  font-size: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.flickity-page-dots .dot.is-selected {
+  background-color: grey;
+}
+.description {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.opinion {
+  display: inline-block;
+  vertical-align: middle;
+}
+.opinion {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.gallery {
+  position: relative;
+  margin-bottom: 20px;
+  padding-top: 300px;
+}
+.gallery-row {
+  display: flex;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.gallery-wrapper {
+  position: relative;
+  margin-right: 10px;
+  width: calc(33.33% - 10px);
+  overflow: hidden;
+}
+
+.gallery-wrapper:last-child {
+  margin-right: 0;
+}
+
+.picture-img {
+  position: relative;
+  overflow: hidden;
+}
+
+.picture-img img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.gallery-wrapper:hover .picture-img img {
+  transform: scale(1.1);
+}
+
+.icons-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-wrapper:hover .icons-wrapper {
+  opacity: 1;
+}
+
+.icons-wrapper i {
+  color: white;
+  font-size: 24px;
+  margin-right: 5px;
+}
+
+.gallery-wrapper:hover .icons-wrapper i {
+  color: #ff6b6b;
 }
