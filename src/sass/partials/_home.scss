@@ -150,14 +150,11 @@
 }
 
 .opinion {
-  display: inline-block;
-  vertical-align: middle;
-}
-.opinion {
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  display: inline-block;
+  vertical-align: middle;
 }
 .gallery {
   position: relative;
