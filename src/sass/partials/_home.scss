@@ -13,9 +13,10 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  width: 100%;
 }
 .box1 img {
-  width: 350px;
+  width: 100%;
   height: 150px;
   object-fit: cover;
   border-radius: $radius;
@@ -68,7 +69,7 @@
   justify-content: center;
   background-color: $color-main;
   height: 120px;
-  width: 709px;
+
   text-align: center;
   padding-top: 5px;
   margin-top: 5px;
@@ -78,6 +79,10 @@
   height: 200px;
   width: 200px;
   object-fit: cover;
+}
+
+.carousel-container {
+  overflow: hidden;
 }
 
 .carousel {
@@ -91,15 +96,24 @@
   text-align: center;
 }
 
+// .carousel-cell {
+// justify-content: center;
+// align-items: center;
+// text-align: center;
+// background-color: #f2f2f2;
+// padding: 20px;
+// border-radius: 10px;
+// box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+// display: none;
+// }
+
 .carousel-cell {
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background-color: #f2f2f2;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  display: none;
+  width: 100%;
+  height: 200px;
+  margin-right: 10px;
+  background: #f2f2f2;
+  border-radius: 5px;
+  counter-increment: gallery-cell;
 }
 .opinion img {
   max-width: 100%;
@@ -115,11 +129,11 @@
 }
 .flickity-page-dots {
   position: absolute;
-  bottom: -180px;
+
+  bottom: -5px;
   display: flex;
+  width: 100%;
   justify-content: center;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .dot {
@@ -158,8 +172,7 @@
 }
 .gallery {
   position: relative;
-  margin-bottom: 20px;
-  padding-top: 300px;
+  margin: 20px 0;
 }
 .gallery-row {
   display: flex;
@@ -197,20 +210,16 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.gallery-wrapper:hover .icons-wrapper {
-  opacity: 1;
 }
 
 .icons-wrapper i {
   color: white;
-  font-size: 24px;
+  font-size: 25px;
+  padding: 6px;
   margin-right: 5px;
+  display: inline-block;
 }
 
-.gallery-wrapper:hover .icons-wrapper i {
+.icons-wrapper i:hover {
   color: #ff6b6b;
 }

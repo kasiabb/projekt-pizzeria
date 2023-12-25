@@ -114,9 +114,9 @@ const app = {
     const thisApp = this;
     console.log('*** App starting ***');
     thisApp.initData();
+    thisApp.initPages();
     thisApp.initCart();
     thisApp.initBooking();
-    thisApp.initPages();
     thisApp.initHome();
   },
 };
