@@ -92,24 +92,21 @@ const app = {
       app.cart.add(event.detail.product);
     });
   },
+
   initHome: function () {
     const thisApp = this;
     const homeWrapper = document.querySelector(select.containerOf.homePage);
-
     thisApp.homePage = new Home(homeWrapper);
-    thisApp.navLinks = document.querySelectorAll(select.home.navLinks);
-
-    for (let navLink of thisApp.navLinks) {
-      navLink.addEventListener('click', function (event) {
-        const clickedElement = this;
+    thisApp.homeNavLinks = document.querySelectorAll(select.home.navLinks);
+    for (let link of thisApp.homeNavLinks) {
+      link.addEventListener('click', function (event) {
         event.preventDefault();
-        const linkId = clickedElement.getAttribute('href').replace('#', '');
-        thisApp.activatePage(linkId);
-        window.location.hash = '#/' + linkId;
+        const linkHref = link.getAttribute('href').replace('#', '');
+
+        thisApp.activatePage(linkHref);
       });
     }
   },
-
   init: function () {
     const thisApp = this;
     console.log('*** App starting ***');
