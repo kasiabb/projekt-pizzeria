@@ -10,7 +10,7 @@ class Booking {
     thisBooking.render(element);
     thisBooking.initWidgets();
     thisBooking.getData();
-    thisBooking.selected = {};
+    thisBooking.selected = null;
   }
   getData() {
     const thisBooking = this;
@@ -35,19 +35,19 @@ class Booking {
       booking:
         settings.db.url +
         '/' +
-        settings.db.booking +
+        settings.db.bookings +
         '?' +
         params.booking.join('&'),
       eventsCurrent:
         settings.db.url +
         '/' +
-        settings.db.event +
+        settings.db.events +
         '?' +
         params.eventsCurrent.join('&'),
       eventsRepeat:
         settings.db.url +
         '/' +
-        settings.db.event +
+        settings.db.events +
         '?' +
         params.eventsRepeat.join('&'),
     };
@@ -80,6 +80,7 @@ class Booking {
     console.log('eventsRepeat:', eventsRepeat);
     console.log('Type of bookings:', typeof bookings);
     console.log('Contents of bookings:', bookings);
+
     const thisBooking = this;
     thisBooking.booked = {};
 
@@ -188,17 +189,27 @@ class Booking {
       classNames.booking.tableSelected
     );
 
-    if (tableId) {
-      if (isBooked) {
-        alert('This table is already booked. Choose another table.');
-      } else if (isSelected) {
-        clickedElement.classList.remove(classNames.booking.tableSelected);
-        thisBooking.selected = {};
-      } else if (!isSelected) {
-        thisBooking.removeTables();
-        clickedElement.classList.add(classNames.booking.tableSelected);
-        thisBooking.selected = tableId;
+    if (isBooked) {
+      alert('This table is already booked. Choose another table.');
+      return;
+    }
+    if (thisBooking.selected && thisBooking.selected !== tableId) {
+      const previousSelectedTable = thisBooking.dom.wrapper.querySelector(
+        `.${classNames.booking.tableSelected}`
+      );
+      if (previousSelectedTable) {
+        previousSelectedTable.classList.remove(
+          classNames.booking.tableSelected
+        );
       }
+    }
+    if (isSelected) {
+      clickedElement.classList.remove(classNames.booking.tableSelected);
+      thisBooking.selected = {};
+    } else {
+      thisBooking.removeTables(); // Usuń klasę "wyboru" ze wszystkich stolików
+      clickedElement.classList.add(classNames.booking.tableSelected);
+      thisBooking.selected = tableId;
     }
   }
 
