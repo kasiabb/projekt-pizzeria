@@ -207,7 +207,7 @@ class Booking {
       clickedElement.classList.remove(classNames.booking.tableSelected);
       thisBooking.selected = {};
     } else {
-      thisBooking.removeTables(); // Usuń klasę "wyboru" ze wszystkich stolików
+      thisBooking.removeTables();
       clickedElement.classList.add(classNames.booking.tableSelected);
       thisBooking.selected = tableId;
     }
